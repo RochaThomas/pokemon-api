@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Pokemon from './components/Pokemon';
 import axios from 'axios';
@@ -7,21 +7,27 @@ import axios from 'axios';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+
+  useEffect(() => {
+    axiousShowPokemon();
+  }, []);
+
+  
 // normal aka vanilla fetch method
-//   const ShowPokemon = () => {
-//     console.log("Show Pokemon!");
-//     fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
-//         .then(response => {
-//             return response.json()
-//         })
-//         .then(jsonResponse => {
-//             console.log(jsonResponse);
-//             setPokemon({
-//                 allPokemon: jsonResponse.results
-//             })
-//         })
-//         .catch(err => console.log(err));
-//   };
+  const ShowPokemon = () => {
+    console.log("Show Pokemon!");
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
+        .then(response => {
+            return response.json()
+        })
+        .then(jsonResponse => {
+            console.log(jsonResponse);
+            setPokemon({
+                allPokemon: jsonResponse.results
+            })
+        })
+        .catch(err => console.log(err));
+  };
 
   //axios method
   const axiousShowPokemon = () => {
@@ -38,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <button onClick={ShowPokemon}>Show Me Pokemon</button> */}
+      <button onClick={ShowPokemon}>Show Me Pokemon</button>
       <button onClick={axiousShowPokemon}>Show Me Pokemon Axios Style!</button>
       <Pokemon pokemon={pokemon}/>
     </div>
