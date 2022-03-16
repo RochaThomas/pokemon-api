@@ -4,23 +4,24 @@ import Pokemon from './components/Pokemon';
 import axios from 'axios';
 
 
-// normal aka vanilla fetch method
+
 function App() {
   const [pokemon, setPokemon] = useState([]);
-  const ShowPokemon = () => {
-    console.log("Show Pokemon!");
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
-        .then(response => {
-            return response.json()
-        })
-        .then(jsonResponse => {
-            console.log(jsonResponse);
-            setPokemon({
-                allPokemon: jsonResponse.results
-            })
-        })
-        .catch(err => console.log(err));
-  };
+// normal aka vanilla fetch method
+//   const ShowPokemon = () => {
+//     console.log("Show Pokemon!");
+//     fetch('https://pokeapi.co/api/v2/pokemon?limit=898')
+//         .then(response => {
+//             return response.json()
+//         })
+//         .then(jsonResponse => {
+//             console.log(jsonResponse);
+//             setPokemon({
+//                 allPokemon: jsonResponse.results
+//             })
+//         })
+//         .catch(err => console.log(err));
+//   };
 
   //axios method
   const axiousShowPokemon = () => {
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={ShowPokemon}>Show Me Pokemon</button>
+      {/* <button onClick={ShowPokemon}>Show Me Pokemon</button> */}
       <button onClick={axiousShowPokemon}>Show Me Pokemon Axios Style!</button>
       <Pokemon pokemon={pokemon}/>
     </div>
